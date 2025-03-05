@@ -94,14 +94,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-// Chuyển đổi thời gian (giây) thành định dạng mm:ss
+    // Chuyển đổi thời gian (giây) thành định dạng mm:ss
     function formatTime(time) {
         const minutes = Math.floor(time / 60);
         const seconds = Math.floor(time % 60);
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     }
 
-// Cho phép người dùng click vào thanh tiến trình để tua bài hát
+    // Cho phép người dùng click vào thanh tiến trình để tua bài hát
     document.querySelector('.progress-container').addEventListener('click', function (event) {
         const progressWidth = this.clientWidth;
         const clickX = event.offsetX;
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-// Xử lý khi bấm nút Play/Pause
+    // Xử lý khi bấm nút Play/Pause
     document.querySelector('.play-btn').addEventListener('click', function () {
         if (audioPlayer.paused) {
             audioPlayer.play();
@@ -134,6 +134,43 @@ document.addEventListener('DOMContentLoaded', function () {
     progressBar.addEventListener('mouseout', function () {
         this.style.height = '4px';
     });
+
+    function togglePlay() {
+        let playBtn = document.querySelector('.play-btn i');
+        if (audio.paused) {
+            audio.play();
+            playBtn.className = "fas fa-pause";
+        } else {
+            audio.pause();
+            playBtn.className = "fas fa-play";
+        }
+    }
+
+
+    // Lấy phần tử audio player (Đảm bảo có thẻ <audio> trong HTML)
+    const audio = document.getElementById("audio-player");
+
+    // Lấy thanh điều chỉnh âm lượng
+    const volumeSlider = document.querySelector(".volume_slider");
+    const volumeIcon = document.querySelector(".fa-volume-up");
+
+    // Hàm thay đổi âm lượng
+    function setVolume() {
+        let volume = volumeSlider.value / 100;
+        audio.volume = volume;
+
+        // Cập nhật icon volume
+        if (volume == 0) {
+            volumeIcon.className = "fas fa-volume-mute";
+        } else if (volume < 0.5) {
+            volumeIcon.className = "fas fa-volume-down";
+        } else {
+            volumeIcon.className = "fas fa-volume-up";
+        }
+    }
+
+    // Gán sự kiện onchange cho thanh volume
+    volumeSlider.addEventListener("input", setVolume);
 });
 
 
