@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const musicCards = document.querySelectorAll('.music-card');
     const audioPlayer = document.getElementById('audio-player');
     const playButton = document.querySelector('.play-btn i');
-    const progressBar = document.querySelector('.progress');
+    const progressBar = document.querySelector('#seek_slider');
     const currentTimeDisplay = document.querySelector('.text-secondary.small:first-of-type');
     const durationDisplay = document.querySelector('.text-secondary.small:last-of-type');
 
@@ -79,20 +79,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-// Cập nhật thanh tiến trình khi bài hát phát
+    // Cập nhật thanh tiến trình khi bài hát phát
     audioPlayer.addEventListener('timeupdate', function () {
         const currentTime = audioPlayer.currentTime;
         const duration = audioPlayer.duration;
 
         if (!isNaN(duration)) {
-            const progressPercent = (currentTime / duration) * 100;
-            progressBar.style.width = `${progressPercent}%`;
+            progressBar.style.width = `${100}%`;
 
             // Hiển thị thời gian hiện tại và tổng thời gian bài hát
             currentTimeDisplay.textContent = formatTime(currentTime);
             durationDisplay.textContent = formatTime(duration);
         }
     });
+
+    audioPlayer.addEventListener("play", () => {
+        setInterval(() => {
+            progressBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        }, 500);
+    });
+
 
     // Chuyển đổi thời gian (giây) thành định dạng mm:ss
     function formatTime(time) {
@@ -102,15 +108,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Cho phép người dùng click vào thanh tiến trình để tua bài hát
-    document.querySelector('.progress-container').addEventListener('click', function (event) {
-        const progressWidth = this.clientWidth;
-        const clickX = event.offsetX;
+    // Khi người dùng thay đổi thanh tiến trình
+    progressBar.addEventListener("input", function () {
         const duration = audioPlayer.duration;
+        if (!isNaN(duration) && duration > 0) {
+            // Tính toán thời gian mới theo phần trăm
+            const newTime = (progressBar.value / 100) * duration;
+            audioPlayer.currentTime = newTime; // Cập nhật thời gian
 
-        if (!isNaN(duration)) {
-            audioPlayer.currentTime = (clickX / progressWidth) * duration;
+            // Nếu bài hát đang phát, tiếp tục phát sau khi tua
+            if (!audioPlayer.paused) {
+                audioPlayer.play();
+            }
+
+            playButton.classList.add("fa-pause");
+            playButton.classList.remove("fa-play");
         }
     });
+
+
 
     // Xử lý khi bấm nút Play/Pause
     document.querySelector('.play-btn').addEventListener('click', function () {
@@ -126,14 +142,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // Add hover effect to progress bar
-    progressBar.addEventListener('mouseover', function () {
-        this.style.height = '6px';
-    });
+    // // Add hover effect to progress bar
+    // progressBar.addEventListener('mouseover', function () {
+    //     this.style.height = '5px';
+    // });
 
-    progressBar.addEventListener('mouseout', function () {
-        this.style.height = '4px';
-    });
+    // progressBar.addEventListener('mouseout', function () {
+    //     this.style.height = '4px';
+    // });
 
     function togglePlay() {
         let playBtn = document.querySelector('.play-btn i');
@@ -160,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
         audio.volume = volume;
 
         // Cập nhật icon volume
-        if (volume == 0) {
+        if (volume === 0) {
             volumeIcon.className = "fas fa-volume-mute";
         } else if (volume < 0.5) {
             volumeIcon.className = "fas fa-volume-down";

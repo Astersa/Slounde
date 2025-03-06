@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/lamha/Documents/NetBeansProjects/SloundeFix/web/index.html</file>
-            <file>file:/C:/Users/lamha/Documents/NetBeansProjects/SloundeFix/src/java/util/database.sql</file>
-            <file>file:/C:/Users/lamha/Documents/NetBeansProjects/SloundeFix/src/java/controller/HomeServlet.java</file>
-            <file>file:/C:/Users/lamha/Documents/NetBeansProjects/SloundeFix/src/java/util/DBUtil.java</file>
-            <file>file:/C:/Users/lamha/Documents/NetBeansProjects/SloundeFix/src/java/dao/imp/AlbumDAOImpl.java</file>
-            <file>file:/C:/Users/lamha/Documents/NetBeansProjects/SloundeFix/web/WEB-INF/views/home.jsp</file>
+            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/util/DBUtil.java</file>
+            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/WEB-INF/views/home.jsp</file>
+            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/js/script.js</file>
+            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/css/style.css</file>
+            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/util/database.sql</file>
+            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/controller/HomeServlet.java</file>
+            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/index.html</file>
         </group>
     </open-files>
 </project-private>

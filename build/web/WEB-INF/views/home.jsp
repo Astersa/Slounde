@@ -1,12 +1,18 @@
+<%-- 
+    Document   : home-fix
+    Created on : Mar 6, 2025, 12:51:46 PM
+    Author     : admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>WaveBeats - Music Streaming</title>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
         <div class="container-fluid p-0">
@@ -51,13 +57,13 @@
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
-                        <div class="playlist-item">? Chill Vibes</div>
-                        <div class="playlist-item">? Workout Mix</div>
-                        <div class="playlist-item">? Road Trip</div>
-                        <div class="playlist-item">? Focus Flow</div>
-                        <div class="playlist-item">? Party Hits</div>
-                        <div class="playlist-item">? 90s Nostalgia</div>
-                        <div class="playlist-item">? Acoustic Sessions</div>
+                        <div class="playlist-item">✨ Chill Vibes</div>
+                        <div class="playlist-item">🔥 Workout Mix</div>
+                        <div class="playlist-item">🚗 Road Trip</div>
+                        <div class="playlist-item">💻 Focus Flow</div>
+                        <div class="playlist-item">🎉 Party Hits</div>
+                        <div class="playlist-item">🎸 90s Nostalgia</div>
+                        <div class="playlist-item">🎻 Acoustic Sessions</div>
                     </div>
                 </div>
 
@@ -137,15 +143,15 @@
                             <div class="music-card" data-audio="assets/audio/ThapRoiTuDo.mp3">
                                 <span class="card-label">Updated</span>
                                 <img src="assets/thumb/thaproitudo.jpg" alt="Album Cover" class="track-image">
-                                <h6 class="mb-1">Th�p r?i t? do</h6>
+                                <h6 class="mb-1">Tháp rơi tự do</h6>
                                 <p class="text-secondary mb-0">LIBI</p>
                             </div>
                         </div>
                         <div class="col">
                             <div class="music-card" data-audio="assets/audio/TetOiTetA.mp3">
                                 <img src="assets/thumb/tetoiteta.jpg" alt="Album Cover" class="track-image">
-                                <h6 class="mb-1">T?t ?i T?t �</h6>
-                                <p class="text-secondary mb-0">??c Ph�c</p>
+                                <h6 class="mb-1">Tết Ơi Tết À</h6>
+                                <p class="text-secondary mb-0">Đức Phúc</p>
                             </div>
                         </div>
                         <div class="col">
@@ -227,23 +233,23 @@
                     <div class="col-md-6 slider-container">
                         <div class="player-controls d-flex flex-column">
                             <div class="d-flex align-items-center justify-content-center mb-2">
-                                
+
                                 <button class="control-btn random-track">
                                     <i class="fas fa-random"></i>
                                 </button>
-                                
+
                                 <button class="control-btn prev-track">
                                     <i class="fas fa-step-backward"></i>
                                 </button>
-                                
+
                                 <button class="play-btn playpause-track">
                                     <i class="fas fa-play"></i>
                                 </button>
-                                
+
                                 <button class="control-btn next-track">
                                     <i class="fas fa-step-forward"></i>
                                 </button>
-                                
+
                                 <button class="control-btn repeat-track">
                                     <i class="fas fa-redo-alt"></i>
                                 </button>
@@ -251,10 +257,7 @@
                             <div class="d-flex align-items-center">
                                 <span class="text-secondary small">00:00</span>
                                 <div class="progress-container">
-                                    <div class="progress">
-                                        <!--<div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>-->
-                                        <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
-                                    </div>
+                                    <input type="range" min="1" max="100" value="0" id="seek_slider">
                                 </div>
                                 <span class="text-secondary small">00:00</span>
                             </div>
@@ -269,9 +272,9 @@
                         <button class="control-btn">
                             <i class="fas fa-volume-up"></i>
                         </button>
-
-                        <input type="range" min="0" max="100" value="99" class="volume_slider" onchange="setVolume()">
-
+                        <div>
+                            <input type="range" min="0" max="100" value="99" class="volume_slider">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -280,10 +283,10 @@
         <!-- Overlay for mobile -->
         <div class="overlay" id="overlay"></div>
 
-        <!-- Th? <audio> ?? ph�t nh?c -->
+        <!-- Thẻ <audio> để phát nhạc -->
         <audio id="audio-player" controls hidden></audio>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-        <<script src="js/script.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>
