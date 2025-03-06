@@ -1,6 +1,6 @@
 
-    // Mobile sidebar toggle
-    document.addEventListener('DOMContentLoaded', function () {
+// Mobile sidebar toggle
+document.addEventListener('DOMContentLoaded', function () {
     const toggleBtn = document.createElement('button');
     toggleBtn.classList.add('btn', 'position-fixed', 'top-0', 'start-0', 'm-2', 'd-lg-none');
     toggleBtn.style.background = 'rgba(255, 255, 255, 0.1)';
