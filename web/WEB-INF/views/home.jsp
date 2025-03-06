@@ -53,13 +53,13 @@
                             <i class="fas fa-plus"></i>
                         </button>
                     </div>
-                    <div class="playlist-item">? Chill Vibes</div>
-                    <div class="playlist-item">? Workout Mix</div>
-                    <div class="playlist-item">? Road Trip</div>
-                    <div class="playlist-item">? Focus Flow</div>
-                    <div class="playlist-item">? Party Hits</div>
-                    <div class="playlist-item">? 90s Nostalgia</div>
-                    <div class="playlist-item">? Acoustic Sessions</div>
+                    <div class="playlist-item">✨ Chill Vibes</div>
+                    <div class="playlist-item">🔥 Workout Mix</div>
+                    <div class="playlist-item">🚗 Road Trip</div>
+                    <div class="playlist-item">💻 Focus Flow</div>
+                    <div class="playlist-item">🎉 Party Hits</div>
+                    <div class="playlist-item">🎸 90s Nostalgia</div>
+                    <div class="playlist-item">🎻 Acoustic Sessions</div>
                 </div>
             </div>
 
@@ -139,15 +139,15 @@
                         <div class="music-card" data-audio="assets/audio/ThapRoiTuDo.mp3">
                             <span class="card-label">Updated</span>
                             <img src="assets/thumb/thaproitudo.jpg" alt="Album Cover" class="track-image">
-                            <h6 class="mb-1">Th�p r?i t? do</h6>
+                            <h6 class="mb-1">Tháp rơi tự do</h6>
                             <p class="text-secondary mb-0">LIBI</p>
                         </div>
                     </div>
                     <div class="col">
                         <div class="music-card" data-audio="assets/audio/TetOiTetA.mp3">
                             <img src="assets/thumb/tetoiteta.jpg" alt="Album Cover" class="track-image">
-                            <h6 class="mb-1">T?t ?i T?t �</h6>
-                            <p class="text-secondary mb-0">??c Ph�c</p>
+                            <h6 class="mb-1">Tết Ơi Tết À</h6>
+                            <p class="text-secondary mb-0">Đức Phúc</p>
                         </div>
                     </div>
                     <div class="col">
@@ -279,7 +279,7 @@
     <!-- Overlay for mobile -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Th? <audio> ?? ph�t nh?c -->
+    <!-- Thẻ <audio> để phát nhạc -->
     <audio id="audio-player" controls hidden></audio>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
