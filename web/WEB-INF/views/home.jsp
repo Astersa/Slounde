@@ -28,26 +28,26 @@
                                 <i class="fas fa-home"></i> Home
                             </a>
                         </li>
+                        <!--                        <li class="nav-item">
+                                                    <a class="nav-link" href="#">
+                                                        <i class="fas fa-search"></i> Search
+                                                    </a>
+                                                </li>-->
+                        <!--                        <li class="nav-item">
+                                                    <a class="nav-link" href="#">
+                                                        <i class="fas fa-bookmark"></i> Library
+                                                    </a>
+                                                </li>-->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-search"></i> Search
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-bookmark"></i> Library
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="likedsong">
                                 <i class="fas fa-heart"></i> Liked Songs
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-podcast"></i> Podcasts
-                            </a>
-                        </li>
+                        <!--                        <li class="nav-item">
+                                                    <a class="nav-link" href="#">
+                                                        <i class="fas fa-podcast"></i> Podcasts
+                                                    </a>
+                                                </li>-->
                     </ul>
 
                     <div class="mt-4">
@@ -73,6 +73,28 @@
                     <div class="search-container">
                         <i class="fas fa-search"></i>
                         <input type="text" class="search-input" placeholder="Search for artists, songs, or podcasts">
+
+                        <!-- User Profile Button -->
+                        <div class="user-profile-container">
+                            <div class="user-profile-button" id="userProfileButton">
+                                <img src="#" alt="">
+                            </div>
+                            <!-- User Dropdown Menu (Hidden by default) -->
+                            <div class="user-dropdown" id="userDropdown">
+                                <a href="login">
+                                    <div class="user-dropdown-item">
+                                        Đăng nhập
+                                    </div>
+                                </a>
+
+                                <a href="register">
+                                    <div class="user-dropdown-item">
+                                        Đăng ký
+                                    </div>  
+                                </a>
+                                
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Genre Pills -->
@@ -87,15 +109,18 @@
                         <span class="genre-pill">Classical</span>
                     </div>
 
+
+
                     <!-- Recently Played -->
                     <h4 class="section-title">Recently Played</h4>
                     <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 mb-5">
                         <div class="col">
-                            <div class="music-card" data-audio="#">
+                            <div class="music-card" data-audio="https://a128-z3.zmdcdn.me/31cb17656c5146f10de0247036f2772d?authen=exp=1741496441~acl=/31cb17656c5146f10de0247036f2772d*~hmac=ef32abdbc23aba61ccfc78bc2522aae0">
                                 <span class="card-label">New</span>
-                                <img src="#" alt="Album Cover" class="track-image">
-                                <h6 class="mb-1">Summer Nights</h6>
-                                <p class="text-secondary mb-0">Tropical Beats</p>
+                                <img src="https://photo-resize-zmp3.zmdcdn.me/w500_r1x1_jpeg/cover/8/c/1/6/8c166e2b9a0e45ca9a6c7bef40a81f74.jpg
+                                     " alt="Album Cover" class="track-image">
+                                <h6 class="mb-1">Mất Kết Nối</h6>
+                                <p class="text-secondary mb-0">Dương Domic</p>
                             </div>
                         </div>
                         <div class="col">
@@ -140,15 +165,15 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="music-card" data-audio="assets/audio/ThapRoiTuDo.mp3">
+                            <div class="music-card" data-audio="https://dl.dropboxusercontent.com/s/lq3h7ncyeix68zo/ThapRoiTuDo.mp3?st=7hg6thf3&dl=0">
                                 <span class="card-label">Updated</span>
                                 <img src="assets/thumb/thaproitudo.jpg" alt="Album Cover" class="track-image">
-                                <h6 class="mb-1">Tháp rơi tự do</h6>
-                                <p class="text-secondary mb-0">LIBI</p>
+                                <h6 class="mb-1">Tháp Rơi Tự Do</h6>
+                                <p class="text-secondary mb-0">LBI</p>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="music-card" data-audio="assets/audio/TetOiTetA.mp3">
+                            <div class="music-card" data-audio="https://dl.dropboxusercontent.com/s/nr5294u399kh7vg/TetOiTetA.mp3?st=pkcbktdk&dl=0">
                                 <img src="assets/thumb/tetoiteta.jpg" alt="Album Cover" class="track-image">
                                 <h6 class="mb-1">Tết Ơi Tết À</h6>
                                 <p class="text-secondary mb-0">Đức Phúc</p>
@@ -230,6 +255,7 @@
                     </div>
 
                     <!-- Player Controls -->
+
                     <div class="col-md-6 slider-container">
                         <div class="player-controls d-flex flex-column">
                             <div class="d-flex align-items-center justify-content-center mb-2">
@@ -288,5 +314,6 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
         <script src="js/script.js"></script>
+        <script src="js/user-script.js"></script>
     </body>
 </html>
