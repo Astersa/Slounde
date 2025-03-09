@@ -19,7 +19,6 @@ public class AuthenticationFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        // Initialization logic (if needed)
     }
 
     @Override
@@ -28,11 +27,10 @@ public class AuthenticationFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        // Authentication check
         if (httpRequest.getSession().getAttribute("user") == null) {
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
         } else {
-            chain.doFilter(request, response); // Continue if authenticated
+            chain.doFilter(request, response); 
         }
     }
 

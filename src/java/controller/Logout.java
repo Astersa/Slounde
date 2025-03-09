@@ -21,10 +21,8 @@ import util.AuthenticationUtil;
 public class Logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Gọi phương thức logout để hủy session
         AuthenticationUtil.logout(req);
         
-        // Chuyển hướng về trang đăng nhập
         resp.sendRedirect(req.getContextPath() + "/login");
     }
 }

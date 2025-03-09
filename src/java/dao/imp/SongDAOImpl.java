@@ -72,7 +72,6 @@ public class SongDAOImpl implements SongDAO {
             
             if (rs.next()) {
                 song = extractSongFromResultSet(rs);
-                // Load genres for this song
                 song.setGenres(getGenresForSong(conn, id));
             }
         } catch (SQLException e) {
