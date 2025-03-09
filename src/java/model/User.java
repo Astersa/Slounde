@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -12,7 +12,7 @@ import java.sql.Date;
 
 
 public class User {
-    private int userId;
+    private int id;
     private Date dob; 
     private String name;
     private String username;
@@ -20,8 +20,8 @@ public class User {
     private int subId;
 
     // Constructor
-    public User(int userId, Date dob, String name, String username, String password, int subId) {
-        this.userId = userId;
+    public User(int id, Date dob, String name, String username, String password, int subId) {
+        this.id = id;
         this.dob = dob;
         this.name = name;
         this.username = username;
@@ -31,11 +31,11 @@ public class User {
 
     // Getters and Setters
     public int getUserId() {
-        return userId;
+        return id;
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        this.id = userId;
     }
 
     public Date getDob() {
@@ -82,7 +82,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
+                "userId=" + id +
                 ", dob=" + dob +
                 ", name='" + name + '\'' +
                 ", username='" + username + '\'' +

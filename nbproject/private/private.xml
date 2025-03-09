@@ -3,25 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/model/User.java</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/index.html</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/WEB-INF/views/home.jsp</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/WEB-INF/views/register.jsp</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/WEB-INF/views/likedsong.jsp</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/dao/imp/UserDAOImpl.java</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/css/likedsong.css</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/js/user-script.js</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/css/style.css</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/controller/LikedSong.java</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/dao/imp/AlbumDAOImpl.java</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/util/database.sql</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/js/script.js</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/web/WEB-INF/views/login.jsp</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/util/dtb.sql</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/dao/UserDAO.java</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/dao/imp/GenreDAOImpl.java</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/controller/Login.java</file>
-            <file>file:/D:/FPT/2025.SP4/PRJ301/Slounde/src/java/controller/Register.java</file>
+            <file>file:/C:/Users/lamha/Desktop/New%20folder/Slounde/web/WEB-INF/views/home.jsp</file>
+            <file>file:/C:/Users/lamha/Desktop/New%20folder/Slounde/web/assets/thumb/tetoiteta.jpg</file>
+            <file>file:/C:/Users/lamha/Desktop/New%20folder/Slounde/src/java/util/DBUtil.java</file>
+            <file>file:/C:/Users/lamha/Desktop/New%20folder/Slounde/web/index.html</file>
         </group>
     </open-files>
 </project-private>

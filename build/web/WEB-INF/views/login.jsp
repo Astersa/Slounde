@@ -94,10 +94,32 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <input type="text" class="input-field" placeholder="Username">
-        <input type="password" class="input-field" placeholder="Password">
-        <button class="login-btn">Login</button>
+        
+        <% if(request.getAttribute("error") != null) { %>
+        <div class="error-message">
+            <%= request.getAttribute("error") %>
+        </div>
+        <% } %>
+        
+        <form id="loginForm" method="post" action="login">
+            <input type="text" name="username" id="username" class="input-field" placeholder="Username" required>
+            <input type="password" name="password" id="password" class="input-field" placeholder="Password" required>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
         <p class="register-link">Don't have an account? <a href="register">Register here</a></p>
     </div>
+    
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            string username = document.getElementById("username").value;
+            string password = document.getElementById("password").value;
+            
+            if (!username || !password) {
+                event.preventDefault();
+                alert("Username and password are required");
+                return false;
+            }
+        });
+    </script>
 </body>
 </html>

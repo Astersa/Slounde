@@ -33,7 +33,7 @@ public class SongDAOImpl implements SongDAO {
         
         try {
             conn = DBUtil.getConnection();
-            String sql = "SELECT * FROM Song";
+            String sql = "SELECT * FROM Songs";
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             
@@ -65,7 +65,7 @@ public class SongDAOImpl implements SongDAO {
         
         try {
             conn = DBUtil.getConnection();
-            String sql = "SELECT * FROM Song WHERE id = ?";
+            String sql = "SELECT * FROM Songs WHERE id = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();

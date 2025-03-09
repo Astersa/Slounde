@@ -116,40 +116,98 @@
     <body>
         <div class="register-container">
             <h2>Create Account</h2>
-            <form id="registerForm">
+
+            <% if(request.getAttribute("error") != null) { %>
+            <div class="error-message">
+                <%= request.getAttribute("error") %>
+            </div>
+            <% } %>
+
+            <form id="registerForm" method="post" action="register">
                 <div class="input-group">
                     <label class="form-label" for="name">Full Name</label>
-                    <input type="text" id="name" class="input-field" placeholder="Enter your full name" required>
+                    <input type="text" id="name" name="name" class="input-field" placeholder="Enter your full name" required>
                 </div>
-
                 <div class="input-group">
                     <label class="form-label" for="dob">Date of Birth</label>
-                    <input type="date" id="dob" class="input-field" required>
+                    <input type="date" id="dob" name="dob" class="input-field" required>
                 </div>
-
                 <div class="input-group">
                     <label class="form-label" for="username">Username</label>
-                    <input type="text" id="username" class="input-field" placeholder="Choose a username" required>
+                    <input type="text" id="username" name="username" class="input-field" placeholder="Choose a username" required>
                 </div>
-
                 <div class="input-group">
                     <label class="form-label" for="password">Password</label>
-                    <input type="password" id="password" class="input-field" placeholder="Create a password" required>
-                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">️</button>
+                    <input type="password" id="password" name="password" class="input-field" placeholder="Create a password" required>
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</button>
                 </div>
-
                 <div class="input-group">
                     <label class="form-label" for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm your password" required>
-                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')">️</button>
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="input-field" placeholder="Confirm your password" required>
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')">👁️</button>
                 </div>
-
                 <button type="submit" class="register-btn">Register</button>
             </form>
             <p class="login-link">Already have an account? <a href="login">Login here</a></p>
         </div>
 
         <script>
+            document.getElementById("registerForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const password = document.getElementById("password").value;
+                const confirmPassword = document.getElementById("confirmPassword").value;
+
+                if (password !== confirmPassword) {
+                    alert("Passwords do not match. Please try again.");
+                    return false;
+                }
+
+                const formData = new FormData();
+                formData.append("name", document.getElementById("name").value);
+                formData.append("dob", document.getElementById("dob").value);
+                formData.append("username", document.getElementById("username").value);
+                formData.append("password", password);
+                formData.append("confirmPassword", confirmPassword);
+
+                fetch("register", {
+                    method: "POST",
+                    body: formData
+                })
+                        .then(response => {
+                            if (response.redirected) {
+                                window.location.href = response.url;
+                            } else {
+                                return response.text();
+                            }
+                        })
+                        .then(html => {
+                            if (html) {
+                                document.body.innerHTML = html;
+                                attachEventListeners();
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                            alert("An error occurred. Please try again.");
+                        });
+            });
+
+            function attachEventListeners() {
+                const form = document.getElementById("registerForm");
+                if (form) {
+                    form.addEventListener("submit", this.onsubmit);
+                }
+
+                const toggleButtons = document.querySelectorAll(".toggle-password");
+                toggleButtons.forEach(button => {
+                    button.onclick = function () {
+                        const fieldId = this.previousElementSibling.id;
+                        togglePasswordVisibility(fieldId);
+                    };
+                });
+            }
+
             function togglePasswordVisibility(fieldId) {
                 const passwordField = document.getElementById(fieldId);
                 const toggleButton = passwordField.nextElementSibling;
@@ -162,33 +220,6 @@
                     toggleButton.innerHTML = "👁️";
                 }
             }
-
-            document.getElementById("registerForm").addEventListener("submit", function (event) {
-                event.preventDefault();
-
-                const password = document.getElementById("password").value;
-                const confirmPassword = document.getElementById("confirmPassword").value;
-
-                if (password !== confirmPassword) {
-                    alert("Passwords do not match. Please try again.");
-                    return false;
-                }
-
-                // Trong thực tế, bạn sẽ gửi dữ liệu đến server tại đây
-                console.log("Form submitted successfully");
-
-                // Dữ liệu người dùng
-                const userData = {
-                    userId: null, // Thường được tạo bởi server
-                    name: document.getElementById("name").value,
-                    dob: document.getElementById("dob").value,
-                    username: document.getElementById("username").value,
-                    password: password
-                };
-
-                console.log("User data:", userData);
-                alert("Registration successful!");
-            });
         </script>
     </body>
 </html>

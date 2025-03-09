@@ -33,7 +33,7 @@ public class UserDAOImpl implements UserDAO {
 
         try {
             conn = DBUtil.getConnection();
-            String sql = "SELECT * FROM User";
+            String sql = "SELECT * FROM Users";
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -71,7 +71,7 @@ public class UserDAOImpl implements UserDAO {
 
         try {
             conn = DBUtil.getConnection();
-            String sql = "SELECT * FROM User WHERE id = ?";
+            String sql = "SELECT * FROM Users WHERE id = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
@@ -109,7 +109,7 @@ public class UserDAOImpl implements UserDAO {
 
         try {
             conn = DBUtil.getConnection();
-            String sql = "SELECT * FROM User WHERE username = ?";
+            String sql = "SELECT * FROM Users WHERE username = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, username);
             rs = ps.executeQuery();
@@ -191,7 +191,7 @@ public class UserDAOImpl implements UserDAO {
 
         try {
             conn = DBUtil.getConnection();
-            String sql = "UPDATE User SET name = ?, username = ?, password = ? WHERE id = ?";
+            String sql = "UPDATE Users SET name = ?, username = ?, password = ? WHERE id = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, user.getName());
             ps.setString(2, user.getUsername());
@@ -226,14 +226,14 @@ public class UserDAOImpl implements UserDAO {
             conn = DBUtil.getConnection();
 
             // First delete from User_Like_Song table
-            String sql1 = "DELETE FROM User_Like_Song WHERE userId = ?";
+            String sql1 = "DELETE FROM UserLikes WHERE userId = ?";
             ps = conn.prepareStatement(sql1);
             ps.setInt(1, id);
             ps.executeUpdate();
             ps.close();
 
             // Then delete the user
-            String sql2 = "DELETE FROM User WHERE id = ?";
+            String sql2 = "DELETE FROM Users WHERE id = ?";
             ps = conn.prepareStatement(sql2);
             ps.setInt(1, id);
             int affectedRows = ps.executeUpdate();
@@ -264,7 +264,7 @@ public class UserDAOImpl implements UserDAO {
 
         try {
             conn = DBUtil.getConnection();
-            String sql = "SELECT * FROM User WHERE username = ? AND password = ?";
+            String sql = "SELECT * FROM Users WHERE username = ? AND password = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, username);
             ps.setString(2, password); // In production, use password hashing!
@@ -298,7 +298,7 @@ public class UserDAOImpl implements UserDAO {
 
         try {
             conn = DBUtil.getConnection();
-            String sql = "INSERT INTO User_Like_Song (userId, songId) VALUES (?, ?)";
+            String sql = "INSERT INTO UserLikes (userId, songId) VALUES (?, ?)";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, userId);
             ps.setInt(2, songId);
@@ -327,7 +327,7 @@ public class UserDAOImpl implements UserDAO {
 
         try {
             conn = DBUtil.getConnection();
-            String sql = "DELETE FROM User_Like_Song WHERE userId = ? AND songId = ?";
+            String sql = "DELETE FROM UserLikes WHERE userId = ? AND songId = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, userId);
             ps.setInt(2, songId);
@@ -358,8 +358,8 @@ public class UserDAOImpl implements UserDAO {
 
         try {
             conn = DBUtil.getConnection();
-            String sql = "SELECT s.* FROM Song s "
-                    + "JOIN User_Like_Song uls ON s.id = uls.songId "
+            String sql = "SELECT s.* FROM Songs s "
+                    + "JOIN UserLikes uls ON s.id = uls.songId "
                     + "WHERE uls.userId = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, userId);
@@ -398,7 +398,7 @@ public class UserDAOImpl implements UserDAO {
 
     // Helper method to extract User from ResultSet
     private User extractUserFromResultSet(ResultSet rs) throws SQLException {
-        User user = new User(rs.getInt("UserId"),
+        User user = new User(rs.getInt("Id"),
                 rs.getDate("DoB"),
                 rs.getString("Name"),
                 rs.getString("Username"),
