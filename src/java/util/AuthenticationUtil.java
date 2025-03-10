@@ -12,18 +12,23 @@ import jakarta.servlet.http.HttpSession;
  * @author Astersa
  */
 public class AuthenticationUtil {
+
     /**
      * Kiểm tra xem người dùng đã đăng nhập chưa
+     *
      * @param request HttpServletRequest
      * @return true nếu người dùng đã đăng nhập, false nếu chưa
      */
     public static boolean isAuthenticated(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
+        System.out.println("Checking auth - Session: " + (session != null ? session.getId() : "null"));
+        System.out.println("userId: " + (session != null ? session.getAttribute("userId") : "null"));
         return (session != null && session.getAttribute("userId") != null);
     }
-    
+
     /**
      * Lấy userId của người dùng đã đăng nhập
+     *
      * @param request HttpServletRequest
      * @return userId của người dùng đã đăng nhập, hoặc -1 nếu chưa đăng nhập
      */
@@ -34,9 +39,10 @@ public class AuthenticationUtil {
         }
         return -1;
     }
-    
+
     /**
      * Đăng xuất người dùng
+     *
      * @param request HttpServletRequest
      */
     public static void logout(HttpServletRequest request) {

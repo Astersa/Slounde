@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,6 +18,14 @@
     <body>
         <div class="container-fluid p-0">
             <div class="row g-0">
+               <% if (request.getAttribute("auth") != null) { %>
+                <% Integer userId = (Integer) session.getAttribute("userId"); %>
+                <div>
+                    <%= request.getAttribute("auth") %>
+                    <%= userId %>
+                </div>
+            <% } %>  
+
                 <!-- Sidebar -->
                 <div class="col-lg-2 col-md-3 sidebar" id="sidebar">
                     <div class="d-flex justify-content-center mb-4">
@@ -57,13 +66,6 @@
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
-                        <div class="playlist-item">✨ Chill Vibes</div>
-                        <div class="playlist-item">🔥 Workout Mix</div>
-                        <div class="playlist-item">🚗 Road Trip</div>
-                        <div class="playlist-item">💻 Focus Flow</div>
-                        <div class="playlist-item">🎉 Party Hits</div>
-                        <div class="playlist-item">🎸 90s Nostalgia</div>
-                        <div class="playlist-item">🎻 Acoustic Sessions</div>
                     </div>
                 </div>
 
@@ -92,7 +94,7 @@
                                         Đăng ký
                                     </div>  
                                 </a>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -115,7 +117,7 @@
                     <h4 class="section-title">Recently Played</h4>
                     <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 mb-5">
                         <div class="col">
-                            <div class="music-card" data-audio="https://a128-z3.zmdcdn.me/31cb17656c5146f10de0247036f2772d?authen=exp=1741496441~acl=/31cb17656c5146f10de0247036f2772d*~hmac=ef32abdbc23aba61ccfc78bc2522aae0">
+                            <div class="music-card" data-audio="https://a128-z3.zmdcdn.me/31cb17656c5146f10de0247036f2772d?authen=exp=1741707440~acl=/31cb17656c5146f10de0247036f2772d*~hmac=5c94ec601649c4bdb9fab930bcf63333">
                                 <span class="card-label">New</span>
                                 <img src="https://photo-resize-zmp3.zmdcdn.me/w500_r1x1_jpeg/cover/8/c/1/6/8c166e2b9a0e45ca9a6c7bef40a81f74.jpg
                                      " alt="Album Cover" class="track-image">

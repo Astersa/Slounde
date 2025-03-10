@@ -11,7 +11,7 @@ import java.util.List;
  * @author Astersa
  */
 public class Song {
-     private int id;
+    private int id;
     private String name;
     private int view;
     private String url;

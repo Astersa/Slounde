@@ -49,15 +49,15 @@ create table Albums (
 );
 
 create table SongGenre (
-                Id int IDENTITY(1,1) primary key,
-	SongId int foreign key references Songs(SongId),
-	GenreId int foreign key references Genre(GenreId),
-	primary key (SongId, GenreId)
+    Id int IDENTITY(1,1) primary key,
+	SongId int foreign key references Songs(Id),
+	GenreId int foreign key references Genre(Id),
+	CONSTRAINT UQ_SongGenre UNIQUE (SongId, GenreId)
 );
 
 create table UserLikes (
 Id int IDENTITY(1,1) primary key,
 	UserId int foreign key references Users(Id),
 	SongId int foreign key references Songs(Id),
-	primary key (UserId, SongId)
+	CONSTRAINT UQ_UserLikes UNIQUE (UserId, SongId)
 );

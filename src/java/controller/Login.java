@@ -39,7 +39,7 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        
+
         // Kiểm tra dữ liệu đầu vào
         if (username == null || username.trim().isEmpty()
                 || password == null || password.trim().isEmpty()) {
@@ -56,9 +56,12 @@ public class Login extends HttpServlet {
             User user = userDAO.getUserByUsername(username);
             if (user != null && user.getPassword().equals(password)) {
                 HttpSession session = req.getSession(true);
+                System.out.println(user.getUserId());
                 session.setAttribute("userId", user.getUserId());
-                session.setAttribute("username", user.getUsername());
-                session.setAttribute("name", user.getName());
+                System.out.println("Session created: " + session.getId());
+                System.out.println("userId set: " + session.getAttribute("userId"));
+//                session.setAttribute("username", user.getUsername());
+//                session.setAttribute("name", user.getName());
 
                 session.setMaxInactiveInterval(30 * 60);
 

@@ -155,15 +155,15 @@
             document.getElementById("registerForm").addEventListener("submit", function (event) {
                 event.preventDefault();
 
-                const password = document.getElementById("password").value;
-                const confirmPassword = document.getElementById("confirmPassword").value;
+                string password = document.getElementById("password").value;
+                string confirmPassword = document.getElementById("confirmPassword").value;
 
                 if (password !== confirmPassword) {
                     alert("Passwords do not match. Please try again.");
                     return false;
                 }
 
-                const formData = new FormData();
+                FormData formData = new FormData();
                 formData.append("name", document.getElementById("name").value);
                 formData.append("dob", document.getElementById("dob").value);
                 formData.append("username", document.getElementById("username").value);
