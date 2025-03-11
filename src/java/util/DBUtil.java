@@ -10,9 +10,6 @@ package util;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Properties;
-import java.io.IOException;
-import java.io.InputStream;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 public class DBUtil {
@@ -26,9 +23,10 @@ public class DBUtil {
             
             // Database connection settings
             dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            dataSource.setUrl("jdbc:sqlserver://ASTERSA:1433;databaseName=SloundeDB;encrypt=true;trustServerCertificate=true");
+//            dataSource.setUrl("jdbc:sqlserver://ND2P\\PHUONG:1433;databaseName=SloundeDB;encrypt=true;trustServerCertificate=true");
+            dataSource.setUrl("jdbc:sqlserver://ND2P\\PHUONG:1433;databaseName=SloundeDB;encrypt=true;trustServerCertificate=true");
             dataSource.setUsername("sa");
-            dataSource.setPassword("password");
+            dataSource.setPassword("123");
             
             // Connection pool settings
             dataSource.setInitialSize(5);

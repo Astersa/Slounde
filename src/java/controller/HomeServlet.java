@@ -21,6 +21,7 @@ import model.Song;
 
 import java.io.IOException;
 import java.util.List;
+import util.AuthenticationUtil;
 
 @WebServlet(name = "HomeServlet", urlPatterns = {"/home", ""})
 public class HomeServlet extends HttpServlet {
@@ -36,6 +37,9 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        boolean auth = AuthenticationUtil.isAuthenticated(request);
+        request.setAttribute("auth", auth);
+        
         // Get latest songs for home page
         List<Song> latestSongs = songDAO.getAllSongs();
         

@@ -55,6 +55,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentTimeDisplay = document.querySelector('.text-secondary.small:first-of-type');
     const durationDisplay = document.querySelector('.text-secondary.small:last-of-type');
 
+    //Thanh tiến trình mặc định ở giá trị 0
+    progressBar.value = 0;
+    
     musicCards.forEach(card => {
         card.addEventListener('click', function () {
             const title = this.querySelector('h6').textContent;
@@ -68,8 +71,9 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('.col-md-3 p').textContent = artist;
 
             // Cập nhật nguồn nhạc và phát bài hát
-            if (audioSrc) {
+            if (audioSrc != "#") {
                 audioPlayer.src = audioSrc;
+                
                 audioPlayer.play();
             }
 
@@ -83,14 +87,13 @@ document.addEventListener('DOMContentLoaded', function () {
     audioPlayer.addEventListener('timeupdate', function () {
         const currentTime = audioPlayer.currentTime;
         const duration = audioPlayer.duration;
-
         if (!isNaN(duration)) {
             progressBar.style.width = `${100}%`;
 
             // Hiển thị thời gian hiện tại và tổng thời gian bài hát
             currentTimeDisplay.textContent = formatTime(currentTime);
             durationDisplay.textContent = formatTime(duration);
-        }
+        } 
     });
 
     audioPlayer.addEventListener("play", () => {
@@ -120,9 +123,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!audioPlayer.paused) {
                 audioPlayer.play();
             }
-
-            playButton.classList.add("fa-pause");
-            playButton.classList.remove("fa-play");
         }
     });
 
@@ -140,16 +140,6 @@ document.addEventListener('DOMContentLoaded', function () {
             playButton.classList.add('fa-play');
         }
     });
-
-
-    // // Add hover effect to progress bar
-    // progressBar.addEventListener('mouseover', function () {
-    //     this.style.height = '5px';
-    // });
-
-    // progressBar.addEventListener('mouseout', function () {
-    //     this.style.height = '4px';
-    // });
 
     function togglePlay() {
         let playBtn = document.querySelector('.play-btn i');
