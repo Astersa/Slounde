@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>WaveBeats - Music Streaming</title>
+        <title>SLOUDE - Music Streaming</title>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/likedsong.css" />
@@ -20,7 +20,9 @@
                 <!-- Sidebar -->
                 <div class="col-lg-2 col-md-3 sidebar" id="sidebar">
                     <div class="d-flex justify-content-center mb-4">
-                        <h4 class="logo">WaveBeats</h4>
+                        <a href="home" style="text-decoration: none">
+                            <h4 class="logo">SLOUDE</h4>
+                        </a>
                     </div>
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -73,6 +75,54 @@
                     <div class="search-container">
                         <i class="fas fa-search"></i>
                         <input type="text" class="search-input" placeholder="Search for artists, songs, or podcasts">
+
+
+                        <%Integer userId = (Integer) session.getAttribute("userId");
+                        if (userId == null) {%>
+                        <!-- User Profile Button -->
+                        <div class="user-profile-container">
+                            <div class="user-profile-button" id="userProfileButton">
+                                <img src="#" alt="">
+                            </div>
+                            <!-- User Dropdown Menu (Hidden by default) -->
+                            <div class="user-dropdown" id="userDropdown">
+                                <a href="login">
+                                    <div class="user-dropdown-item">
+                                        Log in
+                                    </div>
+                                </a>
+
+                                <a href="register">
+                                    <div class="user-dropdown-item">
+                                        Register
+                                    </div>  
+                                </a>
+
+                            </div>
+                        </div>
+                        <%} else {%>
+                        <!-- User Profile Button -->
+                        <div class="user-profile-container">
+                            <div class="user-profile-button" id="userProfileButton">
+                                <img src="#" alt="">
+                            </div>
+                            <!-- User Dropdown Menu (Hidden by default) -->
+                            <div class="user-dropdown" id="userDropdown">
+                                <a href="user">
+                                    <div class="user-dropdown-item">
+                                        Profile
+                                    </div>
+                                </a>
+
+                                <a href="logout">
+                                    <div class="user-dropdown-item">
+                                        Log out
+                                    </div>  
+                                </a>
+
+                            </div>
+                        </div>
+                        <%}%>
                     </div>
 
                     <!-- Genre Pills -->
@@ -88,7 +138,7 @@
                     </div>
 
                     <!--Liked Songs -->
-                  
+
                     <h4 class="section-title">Liked Songs</h4>
                     <div class="liked-songs">
                         <!-- Column headers -->
@@ -250,5 +300,6 @@
 
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
                 <script src="js/script.js"></script>
+                <script src="js/user-script.js"></script>
                 </body>
                 </html>

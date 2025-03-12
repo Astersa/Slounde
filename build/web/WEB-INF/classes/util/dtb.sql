@@ -17,6 +17,9 @@ CREATE TABLE Users (
     Name NVARCHAR(20),  
     Username NVARCHAR(20),
     Password NVARCHAR(20),  
+	AvatarUrl NVARCHAR(max),
+	Mail NVARCHAR(max),
+	Role INT,
     SubId INT,
     CONSTRAINT FK_Users_Subcription FOREIGN KEY (SubId) REFERENCES Subcription(Id) 
 );

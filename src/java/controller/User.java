@@ -17,6 +17,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -34,6 +35,13 @@ public class User extends HttpServlet {
     private static final String DEFAULT_AVATAR_URL = "assets/default-ava.png";
     private static final String DB_URL = "jdbc:sqlserver://ND2P\\PHUONG:1433;databaseName=your_database;user=sa;password=123";
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/WEB-INF/views/user.jsp").forward(req, resp);
+    }
+
+    
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         String userId = request.getParameter("userId");
 

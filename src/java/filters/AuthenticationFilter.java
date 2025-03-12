@@ -14,7 +14,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebFilter(filterName = "AuthenticationFilter", urlPatterns = {"/profile", "/playlist/*", "/songs/*"})
+@WebFilter(filterName = "AuthenticationFilter", urlPatterns = {"/profile", "/likedsong/*", "/songs/*"})
 public class AuthenticationFilter implements Filter {
 
     @Override
@@ -27,7 +27,7 @@ public class AuthenticationFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        if (httpRequest.getSession().getAttribute("user") == null) {
+        if (httpRequest.getSession().getAttribute("userId") == null) {
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
         } else {
             chain.doFilter(request, response); 
