@@ -26,10 +26,11 @@ create table Genre (
 	[Name] nvarchar(10) 
 );
 
-create table Artists (
-	Id int  IDENTITY(1,1) primary key,
-	[Name] nvarchar(20),
-	Followers int
+CREATE TABLE Artists (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    [Name] NVARCHAR(50), 
+    Followers INT DEFAULT 0,
+    ArtistUrl NVARCHAR(max) 
 );
 
 create table Songs (
@@ -45,6 +46,7 @@ create table Songs (
 create table Albums (
 	Id int IDENTITY(1,1) primary key,
 	[Name] nvarchar(100),
+        AlbumUrl NVARCHAR(max),
 	ArtistId int foreign key references Artists(Id)
 );
 
