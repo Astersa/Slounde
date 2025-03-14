@@ -56,8 +56,8 @@ public class Login extends HttpServlet {
             User user = userDAO.getUserByUsername(username);
             if (user != null && user.getPassword().equals(password)) {
                 HttpSession session = req.getSession(true);
-                System.out.println(user.getUserId());
-                session.setAttribute("userId", user.getUserId());
+                System.out.println(user.getId());
+                session.setAttribute("userId", user.getId());
                 System.out.println("Session created: " + session.getId());
                 System.out.println("userId set: " + session.getAttribute("userId"));
 //                session.setAttribute("username", user.getUsername());

@@ -3,39 +3,49 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+
 import java.util.Date;
 
 /**
  *
  * @author Astersa
  */
-
-
 public class User {
+
     private int id;
-    private Date dob; 
+    private Date dob;
     private String name;
     private String username;
     private String password;
     private int subId;
+    private String avatarUrl;
+    private String mail;
+    private int role;
 
-    // Constructor
-    public User(int id, Date dob, String name, String username, String password, int subId) {
+    // Constructor không tham số
+    public User() {
+    }
+
+    // Constructor đầy đủ
+    public User(int id, Date dob, String name, String username, String password, int subId, String avatarUrl, String mail, int role) {
         this.id = id;
         this.dob = dob;
         this.name = name;
         this.username = username;
         this.password = password;
         this.subId = subId;
+        this.avatarUrl = avatarUrl;
+        this.mail = mail;
+        this.role = role;
     }
 
-    // Getters and Setters
-    public int getUserId() {
+    // Getter và Setter
+    public int getId() {
         return id;
     }
 
-    public void setUserId(int userId) {
-        this.id = userId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getDob() {
@@ -78,17 +88,42 @@ public class User {
         this.subId = subId;
     }
 
-    // ToString Method
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
-                "userId=" + id +
-                ", dob=" + dob +
-                ", name='" + name + '\'' +
-                ", username='" + username + '\'' +
-                ", subId=" + subId +
-                '}';
+        return "User{"
+                + "id=" + id
+                + ", dob=" + dob
+                + ", name='" + name + '\''
+                + ", username='" + username + '\''
+                + ", password='" + password + '\''
+                + ", subId=" + subId
+                + ", avatarUrl='" + avatarUrl + '\''
+                + ", mail='" + mail + '\''
+                + ", role=" + role
+                + '}';
     }
 }
-
-

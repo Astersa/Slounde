@@ -196,7 +196,7 @@ public class UserDAOImpl implements UserDAO {
             ps.setString(1, user.getName());
             ps.setString(2, user.getUsername());
             ps.setString(3, user.getPassword()); // In production, use password hashing!
-            ps.setInt(4, user.getUserId());
+            ps.setInt(4, user.getId());
 
             int affectedRows = ps.executeUpdate();
             return affectedRows > 0;
@@ -399,11 +399,14 @@ public class UserDAOImpl implements UserDAO {
     // Helper method to extract User from ResultSet
     private User extractUserFromResultSet(ResultSet rs) throws SQLException {
         User user = new User(rs.getInt("Id"),
-                rs.getDate("DoB"),
-                rs.getString("Name"),
-                rs.getString("Username"),
-                rs.getString("Password"),
-                rs.getInt("SubId"));
+                rs.getDate("DoB"), 
+                rs.getString("Name"), 
+                rs.getString("Username"), 
+                rs.getString("Password"), 
+                rs.getInt("SubId"),
+                rs.getString("AvatarUrl"), 
+                rs.getString("Mail"), 
+                rs.getInt("Role"));
         return user;
     }
 }

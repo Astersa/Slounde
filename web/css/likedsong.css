@@ -209,7 +209,6 @@ body {
 .search-container i {
     position: absolute;
     left: 15px;
-    top: 12px;
     color: var(--text-secondary);
 }
 
@@ -221,7 +220,6 @@ body {
     border-radius: 20px;
     width: 100%;
     transition: all 0.3s;
-    /*backdrop-filter: blur(5px); */
 }
 
 .search-input:focus {
@@ -249,13 +247,14 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 3rem;
     font-weight: 800;
     background: linear-gradient(to right, var(--primary-color), var(--tertiary-color));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     letter-spacing: 1px;
 }
 
@@ -275,6 +274,61 @@ body {
     background: linear-gradient(45deg, var(--primary-color), var(--tertiary-color));
     transform: translateY(-2px);
 }
+
+
+/* User Profile Styles */
+.user-profile-container {
+    position: relative;
+    margin-left: 10px;
+}
+
+.user-profile-button {
+    width: 36px;
+    height: 36px;
+    background-color: #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.user-profile-button:hover {
+    background-color: #555;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    width: 180px;
+    background-color: #282828;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+    overflow: hidden;
+}
+
+.user-dropdown-item {
+    padding: 12px 15px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.user-dropdown-item:hover {
+    background-color: #333;
+}
+
+/* Để thanh search và user profile hiển thị cạnh nhau */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
@@ -491,3 +545,4 @@ body {
         display: none;
     }
 }
+

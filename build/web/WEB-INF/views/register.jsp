@@ -132,6 +132,12 @@
                     <label class="form-label" for="dob">Date of Birth</label>
                     <input type="date" id="dob" name="dob" class="input-field" required>
                 </div>
+
+                <div class="input-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" id="email" name="mail" class="input-field" placeholder="Enter your email address" required>
+                </div>
+
                 <div class="input-group">
                     <label class="form-label" for="username">Username</label>
                     <input type="text" id="username" name="username" class="input-field" placeholder="Choose a username" required>
@@ -139,12 +145,12 @@
                 <div class="input-group">
                     <label class="form-label" for="password">Password</label>
                     <input type="password" id="password" name="password" class="input-field" placeholder="Create a password" required>
-                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</button>
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">️</button>
                 </div>
                 <div class="input-group">
                     <label class="form-label" for="confirmPassword">Confirm Password</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" class="input-field" placeholder="Confirm your password" required>
-                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')">👁️</button>
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')">️</button>
                 </div>
                 <button type="submit" class="register-btn">Register</button>
             </form>
@@ -156,7 +162,7 @@
                 event.preventDefault();
 
                 string password = document.getElementById("password").value;
-                string confirmPassword = document.getElementById("confirmPassword").value;
+                        string confirmPassword = document.getElementById("confirmPassword").value;
 
                 if (password !== confirmPassword) {
                     alert("Passwords do not match. Please try again.");
@@ -166,6 +172,7 @@
                 FormData formData = new FormData();
                 formData.append("name", document.getElementById("name").value);
                 formData.append("dob", document.getElementById("dob").value);
+                formData.append("mail", document.getElementById("mail").value);
                 formData.append("username", document.getElementById("username").value);
                 formData.append("password", password);
                 formData.append("confirmPassword", confirmPassword);

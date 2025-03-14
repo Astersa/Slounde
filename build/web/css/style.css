@@ -184,58 +184,98 @@ body {
 
 
 
+/* Overlay - Làm mờ nền */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Nền tối mờ */
+    backdrop-filter: blur(10px); /* Hiệu ứng mờ */
+    display: none;
+    z-index: 99;
+}
 
+/* Popup */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #281e5d, #1b103e); /* Gradient xanh tím */
+    padding: 20px;
+    width: 350px;
+    border-radius: 12px; /* Bo góc mềm mại */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Đổ bóng nhẹ */
+    text-align: center;
+    display: none;
+    z-index: 100;
+    border: 0px solid rgba(255, 255, 255, 0.2); /* Viền sáng nhẹ */
+    animation: fadeIn 0.3s ease-in-out;
+}
 
+/* Tiêu đề */
+.popup h5 {
+    margin: 0 0 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #e0e0e0; /* Màu chữ xám nhạt */
+}
 
+/* Button container */
+.popup-buttons {
+    display: flex;
+    justify-content: space-between;
+}
 
+/* Các nút bấm */
+.btn-login, .btn-cancel {
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    width: 48%;
+    text-align: center;
+    transition: all 0.3s;
+    font-size: 14px;
+}
 
+/* Nút Login */
+.btn-login {
+    background: #1DB954; 
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
+.btn-login:hover {
+    background: #1ed760;
+    box-shadow: 0px 4px 10px rgba(29, 185, 84, 0.5);
+}
 
+/* Nút Cancel */
+.btn-cancel {
+    background: #292929; /* Màu tối hơn */
+    color: #bbb;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
+.btn-cancel:hover {
+    background: #3a3a3a;
+    color: #fff;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Hiệu ứng xuất hiện */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
 
 
 
@@ -261,7 +301,6 @@ body {
 .search-container i {
     position: absolute;
     left: 15px;
-    top: 12px;
     color: var(--text-secondary);
 }
 
@@ -273,7 +312,6 @@ body {
     border-radius: 20px;
     width: 100%;
     transition: all 0.3s;
-    backdrop-filter: blur(5px);
 }
 
 .search-input:focus {
@@ -301,15 +339,17 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 3rem;
     font-weight: 800;
     background: linear-gradient(to right, var(--primary-color), var(--tertiary-color));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     letter-spacing: 1px;
 }
+
 
 .genre-pill {
     display: inline-block;
@@ -424,8 +464,6 @@ body {
     display: flex;
     align-items: center;
 }
-
-
 
 
 /* Responsive tweaks */

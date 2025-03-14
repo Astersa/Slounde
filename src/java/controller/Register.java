@@ -37,15 +37,17 @@ public class Register extends HttpServlet {
         String dobString = req.getParameter("dob");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+        String mail = req.getParameter("mail");
         String confirmPassword = req.getParameter("confirmPassword");
 
         // Kiểm tra dữ liệu
         if (name == null || name.trim().isEmpty()
                 || dobString == null || dobString.trim().isEmpty()
+                || mail == null || mail.trim().isEmpty()
                 || username == null || username.trim().isEmpty()
                 || password == null || password.trim().isEmpty()
                 || confirmPassword == null || confirmPassword.trim().isEmpty()) {
-            System.out.println(name+dobString+username+password+confirmPassword);
+            System.out.println(name + dobString + mail + username + password + confirmPassword);
             req.setAttribute("error", "All fields are required");
             req.getRequestDispatcher("/WEB-INF/views/register.jsp").forward(req, resp);
             return;
@@ -76,7 +78,7 @@ public class Register extends HttpServlet {
             // Tạo đối tượng User mới
             // Gán userId = 0 vì sẽ được database tự tạo
             // SubId mặc định là 1 (như trong phương thức addUser)
-            User newUser = new User(0, dob, name, username, password, 1);
+            User newUser = new User(0, dob, name, username, password, 1, "#", mail, 1);
 
             // Thêm user vào database
             boolean success = userDAO.addUser(newUser);

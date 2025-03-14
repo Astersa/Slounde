@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>WaveBeats - Music Streaming</title>
+        <title>Sloude - Music Streaming</title>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css" />
@@ -18,18 +18,22 @@
     <body>
         <div class="container-fluid p-0">
             <div class="row g-0">
-               <% if (request.getAttribute("auth") != null) { %>
-                <% Integer userId = (Integer) session.getAttribute("userId"); %>
+                <% if (request.getAttribute("auth") != null) { %>
+                <% Integer userId = (Integer) session.getAttribute("userId");
+                
+                %>
                 <div>
                     <%= request.getAttribute("auth") %>
                     <%= userId %>
                 </div>
-            <% } %>  
+                <% } %>  
 
                 <!-- Sidebar -->
                 <div class="col-lg-2 col-md-3 sidebar" id="sidebar">
                     <div class="d-flex justify-content-center mb-4">
-                        <h4 class="logo">WaveBeats</h4>
+                        <a href="home" style="text-decoration: none">
+                            <h4 class="logo">SLOUDE</h4>
+                        </a>
                     </div>
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -47,11 +51,35 @@
                                                         <i class="fas fa-bookmark"></i> Library
                                                     </a>
                                                 </li>-->
-                        <li class="nav-item">
+
+
+                        <!--Nếu sau khi đăng nhập, có userId, khi chọn trang likedsong sẽ ko cần yêu cầu login-->
+                        <% Integer userId = (Integer) session.getAttribute("userId");
+                        if (userId == null) {%>
+                        <li class="nav-item" onclick="openPopup()"> <!-- Kiểm tra khi click -->
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-heart"></i> Liked Songs
+                            </a>
+                        </li>
+
+
+                        <!-- Popup -->
+                        <div class="overlay" id="overlay"></div>
+                        <div class="popup" id="popup">
+                            <h5>You must login to see your liked songs list.</h5>
+                            <div class="popup-buttons">
+                                <a href="login" class="btn-login">Login</a>
+                                <a href="#" class="btn-cancel" onclick="closePopup()">Cancel</a>
+                            </div>
+                        </div>
+                        <%} else {%>
+                        <li class="nav-item"> 
                             <a class="nav-link" href="likedsong">
                                 <i class="fas fa-heart"></i> Liked Songs
                             </a>
                         </li>
+                        <%}%>
+
                         <!--                        <li class="nav-item">
                                                     <a class="nav-link" href="#">
                                                         <i class="fas fa-podcast"></i> Podcasts
@@ -75,7 +103,9 @@
                     <div class="search-container">
                         <i class="fas fa-search"></i>
                         <input type="text" class="search-input" placeholder="Search for artists, songs, or podcasts">
-
+                        
+                        
+                        <%if (userId == null) {%>
                         <!-- User Profile Button -->
                         <div class="user-profile-container">
                             <div class="user-profile-button" id="userProfileButton">
@@ -85,18 +115,41 @@
                             <div class="user-dropdown" id="userDropdown">
                                 <a href="login">
                                     <div class="user-dropdown-item">
-                                        Đăng nhập
+                                        Log in
                                     </div>
                                 </a>
 
                                 <a href="register">
                                     <div class="user-dropdown-item">
-                                        Đăng ký
+                                        Register
                                     </div>  
                                 </a>
 
                             </div>
                         </div>
+                        <%} else {%>
+                        <!-- User Profile Button -->
+                        <div class="user-profile-container">
+                            <div class="user-profile-button" id="userProfileButton">
+                                <img src="#" alt="">
+                            </div>
+                            <!-- User Dropdown Menu (Hidden by default) -->
+                            <div class="user-dropdown" id="userDropdown">
+                                <a href="user">
+                                    <div class="user-dropdown-item">
+                                        Profile
+                                    </div>
+                                </a>
+
+                                <a href="logout">
+                                    <div class="user-dropdown-item">
+                                        Log out
+                                    </div>  
+                                </a>
+
+                            </div>
+                        </div>
+                        <%}%>
                     </div>
 
                     <!-- Genre Pills -->
@@ -117,7 +170,7 @@
                     <h4 class="section-title">Recently Played</h4>
                     <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 mb-5">
                         <div class="col">
-                            <div class="music-card" data-audio="https://a128-z3.zmdcdn.me/31cb17656c5146f10de0247036f2772d?authen=exp=1741707440~acl=/31cb17656c5146f10de0247036f2772d*~hmac=5c94ec601649c4bdb9fab930bcf63333">
+                            <div class="music-card" data-audio="#">
                                 <span class="card-label">New</span>
                                 <img src="https://photo-resize-zmp3.zmdcdn.me/w500_r1x1_jpeg/cover/8/c/1/6/8c166e2b9a0e45ca9a6c7bef40a81f74.jpg
                                      " alt="Album Cover" class="track-image">
