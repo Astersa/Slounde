@@ -24,9 +24,10 @@ public class DBUtil {
             // Database connection settings
             dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 //            dataSource.setUrl("jdbc:sqlserver://ND2P\\PHUONG:1433;databaseName=SloundeDB;encrypt=true;trustServerCertificate=true");
-            dataSource.setUrl("jdbc:sqlserver://ND2P\\PHUONG:1433;databaseName=SloundeDB;encrypt=true;trustServerCertificate=true");
+            dataSource.setUrl("jdbc:sqlserver://Astersa:1433;databaseName=SloundeDB;encrypt=true;trustServerCertificate=true");
             dataSource.setUsername("sa");
-            dataSource.setPassword("123");
+//            dataSource.setPassword("123");
+            dataSource.setPassword("password");
             
             // Connection pool settings
             dataSource.setInitialSize(5);

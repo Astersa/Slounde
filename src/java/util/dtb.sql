@@ -36,6 +36,14 @@ CREATE TABLE Artists (
     ArtistUrl NVARCHAR(max) 
 );
 
+create table Albums (
+	Id int IDENTITY(1,1) primary key,
+	[Name] nvarchar(100),
+                  AlbumUrl NVARCHAR(max),
+                  Likes int,
+	ArtistId int foreign key references Artists(Id)
+);
+
 create table Songs (
 	Id int IDENTITY(1,1) primary key,
 	[Name] nvarchar(100),
@@ -43,14 +51,8 @@ create table Songs (
 	Likes int,
 	SongUrl varchar(max),
 	ThumbnailUrl varchar(max),
-	ArtistId int foreign key references Artists(Id)
-);
-
-create table Albums (
-	Id int IDENTITY(1,1) primary key,
-	[Name] nvarchar(100),
-        AlbumUrl NVARCHAR(max),
-	ArtistId int foreign key references Artists(Id)
+	ArtistId int foreign key references Artists(Id),
+                  AlbumId int foreign key references Album(Id)
 );
 
 create table SongGenre (
@@ -60,9 +62,26 @@ create table SongGenre (
 	CONSTRAINT UQ_SongGenre UNIQUE (SongId, GenreId)
 );
 
-create table UserLikes (
+create table UserLikesSongs (
 Id int IDENTITY(1,1) primary key,
 	UserId int foreign key references Users(Id),
 	SongId int foreign key references Songs(Id),
 	CONSTRAINT UQ_UserLikes UNIQUE (UserId, SongId)
+);
+
+CREATE TABLE UserFollowsArtists (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    UserId INT FOREIGN KEY REFERENCES Users(Id),
+    ArtistId INT FOREIGN KEY REFERENCES Artists(Id),
+    CONSTRAINT UQ_UserFollowsArtist UNIQUE (UserId, ArtistId)
+);
+
+CREATE TABLE UserLikesAlbum (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    UserId INT,
+    AlbumId INT,
+    LikeDate DATETIME DEFAULT GETDATE(),
+    CONSTRAINT FK_UserLikesAlbum_User FOREIGN KEY (UserId) REFERENCES Users(Id),
+    CONSTRAINT FK_UserLikesAlbum_Album FOREIGN KEY (AlbumId) REFERENCES Albums(Id),
+    CONSTRAINT UQ_UserLikesAlbum UNIQUE (UserId, AlbumId)
 );

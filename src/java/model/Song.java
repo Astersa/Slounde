@@ -13,8 +13,10 @@ import java.util.List;
 public class Song {
     private int id;
     private String name;
-    private int view;
-    private String url;
+    private int streams;
+    private int likes;
+    private String songUrl;
+    private String thumbnailUrl;
     private int albumId;
     private int artistId;
     private List<Genre> genres;
@@ -23,11 +25,14 @@ public class Song {
     public Song() {
     }
 
-    public Song(int id, String name, int view, String url, int albumId, int artistId) {
+    public Song(int id, String name, int streams, int likes, String songUrl, String thumbnailUrl, int albumId,
+            int artistId) {
         this.id = id;
         this.name = name;
-        this.view = view;
-        this.url = url;
+        this.streams = streams;
+        this.likes = likes;
+        this.songUrl = songUrl;
+        this.thumbnailUrl = thumbnailUrl;
         this.albumId = albumId;
         this.artistId = artistId;
     }
@@ -49,20 +54,36 @@ public class Song {
         this.name = name;
     }
 
-    public int getView() {
-        return view;
+    public int getStreams() {
+        return streams;
     }
 
-    public void setView(int view) {
-        this.view = view;
+    public void setStreams(int streams) {
+        this.streams = streams;
     }
 
-    public String getUrl() {
-        return url;
+    public int getLikes() {
+        return likes;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public String getSongUrl() {
+        return songUrl;
+    }
+
+    public void setSongUrl(String songUrl) {
+        this.songUrl = songUrl;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 
     public int getAlbumId() {

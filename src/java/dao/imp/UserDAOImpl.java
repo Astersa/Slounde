@@ -369,8 +369,8 @@ public class UserDAOImpl implements UserDAO {
                 Song song = new Song();
                 song.setId(rs.getInt("id"));
                 song.setName(rs.getString("name"));
-                song.setView(rs.getInt("view"));
-                song.setUrl(rs.getString("url"));
+                song.setStreams(rs.getInt("streams"));
+                song.setSongUrl(rs.getString("songUrl"));
                 song.setAlbumId(rs.getInt("albumId"));
                 song.setArtistId(rs.getInt("artistId"));
                 likedSongs.add(song);

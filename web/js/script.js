@@ -1,90 +1,103 @@
-
 // Mobile sidebar toggle
-document.addEventListener('DOMContentLoaded', function () {
-    const toggleBtn = document.createElement('button');
-    toggleBtn.classList.add('btn', 'position-fixed', 'top-0', 'start-0', 'm-2', 'd-lg-none');
-    toggleBtn.style.background = 'rgba(255, 255, 255, 0.1)';
-    toggleBtn.style.backdropFilter = 'blur(5px)';
-    toggleBtn.style.color = 'white';
-    toggleBtn.style.borderRadius = '50%';
-    toggleBtn.style.width = '40px';
-    toggleBtn.style.height = '40px';
-    toggleBtn.style.display = 'flex';
-    toggleBtn.style.alignItems = 'center';
-    toggleBtn.style.justifyContent = 'center';
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.createElement("button");
+    toggleBtn.classList.add(
+            "btn",
+            "position-fixed",
+            "top-0",
+            "start-0",
+            "m-2",
+            "d-lg-none"
+            );
+    toggleBtn.style.background = "rgba(255, 255, 255, 0.1)";
+    toggleBtn.style.backdropFilter = "blur(5px)";
+    toggleBtn.style.color = "white";
+    toggleBtn.style.borderRadius = "50%";
+    toggleBtn.style.width = "40px";
+    toggleBtn.style.height = "40px";
+    toggleBtn.style.display = "flex";
+    toggleBtn.style.alignItems = "center";
+    toggleBtn.style.justifyContent = "center";
     toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
     document.body.appendChild(toggleBtn);
 
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
 
-    toggleBtn.addEventListener('click', function () {
-        sidebar.classList.toggle('show');
-        overlay.classList.toggle('show');
+    toggleBtn.addEventListener("click", function () {
+        sidebar.classList.toggle("show");
+        overlay.classList.toggle("show");
     });
 
-    overlay.addEventListener('click', function () {
-        sidebar.classList.remove('show');
-        overlay.classList.remove('show');
+    overlay.addEventListener("click", function () {
+        sidebar.classList.remove("show");
+        overlay.classList.remove("show");
     });
 
     // Play button toggle
-    const playBtn = document.querySelector('.play-btn');
-    playBtn.addEventListener('click', function () {
-        const icon = playBtn.querySelector('i');
-        if (icon.classList.contains('fa-play')) {
-            icon.classList.remove('fa-play');
-            icon.classList.add('fa-pause');
+    const playBtn = document.querySelector(".play-btn");
+    playBtn.addEventListener("click", function () {
+        const icon = playBtn.querySelector("i");
+        if (icon.classList.contains("fa-play")) {
+            icon.classList.remove("fa-play");
+            icon.classList.add("fa-pause");
 
             // Add animation to now playing
-            document.querySelector('.now-playing-image').classList.add('now-playing-animation');
+            document
+                    .querySelector(".now-playing-image")
+                    .classList.add("now-playing-animation");
         } else {
-            icon.classList.remove('fa-pause');
-            icon.classList.add('fa-play');
+            icon.classList.remove("fa-pause");
+            icon.classList.add("fa-play");
 
             // Remove animation
-            document.querySelector('.now-playing-image').classList.remove('now-playing-animation');
+            document
+                    .querySelector(".now-playing-image")
+                    .classList.remove("now-playing-animation");
         }
     });
 
-    // Make music cards clickable
-    const musicCards = document.querySelectorAll('.music-card');
-    const audioPlayer = document.getElementById('audio-player');
-    const playButton = document.querySelector('.play-btn i');
-    const progressBar = document.querySelector('#seek_slider');
-    const currentTimeDisplay = document.querySelector('.text-secondary.small:first-of-type');
-    const durationDisplay = document.querySelector('.text-secondary.small:last-of-type');
+    // Make music cards clickable 
+    const musicCards = document.querySelectorAll(".music-card");
+    const audioPlayer = document.getElementById("audio-player");
+    const playButton = document.querySelector(".play-btn i");
+    const progressBar = document.querySelector("#seek_slider");
+    const currentTimeDisplay = document.querySelector(
+            ".text-secondary.small:first-of-type");
+    const durationDisplay = document.querySelector(
+            ".text-secondary.small:last-of-type");
 
     //Thanh tiến trình mặc định ở giá trị 0
     progressBar.value = 0;
-    
-    musicCards.forEach(card => {
-        card.addEventListener('click', function () {
-            const title = this.querySelector('h6').textContent;
-            const artist = this.querySelector('p').textContent;
-            const image = this.querySelector('img').src;
-            const audioSrc = this.getAttribute('data-audio');
+
+    musicCards.forEach((card) => {
+        card.addEventListener("click", function () {
+            const title = this.querySelector("h6").textContent;
+            const artist = this.querySelector("p").textContent;
+            const image = this.querySelector("img").src;
+            const audioSrc = this.getAttribute("data-audio");
+            console.log(title);
 
             // Cập nhật giao diện "Now Playing"
-            document.querySelector('.now-playing-image').src = image;
-            document.querySelector('.col-md-3 h6').textContent = title;
-            document.querySelector('.col-md-3 p').textContent = artist;
+            document.querySelector(".now-playing-image").src = image;
+            document.querySelector(".col-md-3 h6").textContent = title;
+            document.querySelector(".col-md-3 p").textContent = artist;
 
             // Cập nhật nguồn nhạc và phát bài hát
             if (audioSrc != "#") {
                 audioPlayer.src = audioSrc;
-                
+
                 audioPlayer.play();
             }
 
             // Cập nhật icon Play/Pause
-            playButton.classList.remove('fa-play');
-            playButton.classList.add('fa-pause');
+            playButton.classList.remove("fa-play");
+            playButton.classList.add("fa-pause");
         });
     });
 
     // Cập nhật thanh tiến trình khi bài hát phát
-    audioPlayer.addEventListener('timeupdate', function () {
+    audioPlayer.addEventListener("timeupdate", function () {
         const currentTime = audioPlayer.currentTime;
         const duration = audioPlayer.duration;
         if (!isNaN(duration)) {
@@ -93,21 +106,21 @@ document.addEventListener('DOMContentLoaded', function () {
             // Hiển thị thời gian hiện tại và tổng thời gian bài hát
             currentTimeDisplay.textContent = formatTime(currentTime);
             durationDisplay.textContent = formatTime(duration);
-        } 
+        }
     });
 
     audioPlayer.addEventListener("play", () => {
         setInterval(() => {
-            progressBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            progressBar.value =
+                    (audioPlayer.currentTime / audioPlayer.duration) * 100;
         }, 500);
     });
-
 
     // Chuyển đổi thời gian (giây) thành định dạng mm:ss
     function formatTime(time) {
         const minutes = Math.floor(time / 60);
         const seconds = Math.floor(time % 60);
-        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
     }
 
     // Cho phép người dùng click vào thanh tiến trình để tua bài hát
@@ -126,23 +139,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
-
     // Xử lý khi bấm nút Play/Pause
-    document.querySelector('.play-btn').addEventListener('click', function () {
+    document.querySelector(".play-btn").addEventListener("click", function () {
         if (audioPlayer.paused) {
             audioPlayer.play();
-            playButton.classList.remove('fa-play');
-            playButton.classList.add('fa-pause');
+            playButton.classList.remove("fa-play");
+            playButton.classList.add("fa-pause");
         } else {
             audioPlayer.pause();
-            playButton.classList.remove('fa-pause');
-            playButton.classList.add('fa-play');
+            playButton.classList.remove("fa-pause");
+            playButton.classList.add("fa-play");
         }
     });
 
     function togglePlay() {
-        let playBtn = document.querySelector('.play-btn i');
+        let playBtn = document.querySelector(".play-btn i");
         if (audio.paused) {
             audio.play();
             playBtn.className = "fas fa-pause";
@@ -151,7 +162,6 @@ document.addEventListener('DOMContentLoaded', function () {
             playBtn.className = "fas fa-play";
         }
     }
-
 
     // Lấy phần tử audio player (Đảm bảo có thẻ <audio> trong HTML)
     const audio = document.getElementById("audio-player");
@@ -179,7 +189,6 @@ document.addEventListener('DOMContentLoaded', function () {
     volumeSlider.addEventListener("input", setVolume);
 });
 
-
 function openPopup() {
     document.getElementById("overlay").style.display = "block";
     document.getElementById("popup").style.display = "block";
@@ -191,6 +200,3 @@ function closePopup() {
 }
 
 // Gọi openPopup() khi cần hiển thị popup
-
-
-

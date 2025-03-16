@@ -6,16 +6,22 @@ package dao;
 
 import java.util.List;
 import model.Album;
+import model.AlbumWithArtist;
 
 /**
  *
  * @author Astersa
  */
 public interface AlbumDAO {
-     List<Album> getAllAlbums();
+    List<AlbumWithArtist> getAllAlbums();
+
     Album getAlbumById(int id);
+
     List<Album> getAlbumsByArtist(int artistId);
+
     boolean addAlbum(Album album);
+
     boolean updateAlbum(Album album);
+
     boolean deleteAlbum(int id);
 }
